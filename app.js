@@ -1,4 +1,5 @@
 //1. Arithmetic Operators
+
 function math(a, b) {
   return a + b;
 }
@@ -220,7 +221,289 @@ const century = (year) => {
 console.log(century(1450));
 
 // Vowel Count
-const getCount = (str) => {};
 
-const Vowel = ["a", "e", "i", "o", "u"];
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const getCount = (str) => {
+  let vowelCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (
+      char === "a" ||
+      char === "e" ||
+      char === "i" ||
+      char === "o" ||
+      char === "u"
+    ) {
+      vowelCount++;
+    }
+  }
+  return vowelCount;
+};
+
+console.log(getCount("my pyx"));
+console.log(getCount("pear trea"));
+console.log(getCount("abracadabra"));
+console.log(getCount("o a kak ushako lil vo kashu kakao"));
+
+// Disemvowel Trolls
+
+const disemvowel = (str) => {
+  const store = str;
+  let removel = store.replace(/[aeiou]/gi, "");
+  return removel;
+};
+console.log(disemvowel("This website is for losers LOL!"));
+
+// Find the Odd Intf
+const findOdd = (arr) => {
+  let store = {};
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+
+    if (store[num]) {
+      store[num]++;
+    } else {
+      store[num] = 1;
+    }
+  }
+
+  for (let key in store) {
+    if (store[key] % 2 !== 0) return key;
+  }
+};
+console.log(findOdd([4, 4, 3, 5, 5]));
+console.log(findOdd([20, 1, 1, 2, 2, 3, 5, 5, 4, 20, 4]));
+console.log(findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5]));
+console.log(findOdd([5, 4, 3, 2, 1, 5, 4, 3, 2, 10, 10]));
+console.log(findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]));
+
+// Get the Middle Character
+function extractMiddle(str) {
+  var position = "";
+  var length = "";
+
+  if (str.length % 2 == 1) {
+    position = str.length / 2;
+    length = 1;
+  } else {
+    position = str.length / 2 - 1;
+    length = 2;
+  }
+  var result = str.substring(position, position + length);
+  console.log(result);
+}
+extractMiddle("test");
+extractMiddle("testing");
+extractMiddle("middle");
+extractMiddle("A");
+
+// Who likes it?
+const likes = (names) => {
+  if (names.length === 0) {
+    return `'No one likes this.'`;
+  } else if (names.length === 1) {
+    return `'${names[0]} likes this.'`;
+  } else if (names.length === 2) {
+    return `'${names[0]} and ${names[1]} like this'`;
+  } else if (names.length === 3) {
+    return `'${names[0]} , ${names[1]} and ${names[2]} like this'`;
+  } else if (names.length > 3) {
+    return `'${names[0]}, ${names[1]} and ${
+      names.length - 2
+    } others like this'`;
+  }
+};
+console.log(likes([]));
+console.log(likes(["Peter"]));
+console.log(likes(["Jacob", "Alex"]));
+console.log(likes(["Max", "John", "Mark"]));
+console.log(likes(["Alex", "Jacob", "Mark", "Max"]));
+
+// Square Every Digit
+
+const squareDigits = (num) => {
+  let store = "";
+  num = num.toString();
+  for (let i = 0; i < num.length; i++) {
+    store += num[i] * num[i];
+  }
+  return store;
+};
+console.log(squareDigits(2112));
+console.log(squareDigits(3212));
+console.log(squareDigits(9159));
+
+// Descending Order
+const descendingOrder = (n) => {
+  let store = [];
+  num = n.toString();
+  for (let i = 0; i < num.length; i++) {
+    store.push(num[i]);
+  }
+  return (result = parseInt(store.sort().reverse().join("")));
+};
+console.log(descendingOrder(0));
+console.log(descendingOrder(1));
+console.log(descendingOrder(1021));
+console.log(descendingOrder(42145));
+console.log(descendingOrder(145263));
+console.log(descendingOrder(123456789));
+
+// Mubling
+const accum = (str) => {
+  return str
+    .split("")
+    .map((item, index) => item.toUpperCase() + item.toLowerCase().repeat(index))
+    .join("-");
+};
+console.log(accum("alamin"));
+
+const accume = (str) => {
+  return str
+    .split("")
+    .map((item, index) => item.toUpperCase() + item.toLowerCase().repeat(index))
+    .join("-");
+};
+console.log(accume("abcd"));
+
+// Stop Snipping my words
+const spinWords = (str) => {
+  let words = str.split(" ");
+  let lengthOfWords = words.length;
+  for (let i = 0; i < lengthOfWords; i++) {
+    if (words[i].length >= 5) {
+      words[i] = words[i].split("").reverse().join("");
+    }
+  }
+  return words.join(" ");
+};
+console.log(spinWords("Hey fellow warriors"));
+console.log(spinWords("This is a test"));
+console.log(spinWords("This is another test"));
+
+// Array.diff
+const arraDiff = (a, b) => {
+  let result = [];
+  for (let i = 0; i < a.length; i++) {
+    if (a.indexOf(b[i]) === -1) {
+      result.push(a[i]);
+    }
+  }
+  return result;
+};
+console.log(arraDiff([1, 8, 2], []));
+console.log(arraDiff([1, 2, 3], [1, 2]));
+console.log(arraDiff([3, 4], [3]));
+console.log(arraDiff([], [4, 5]));
+
+// Capiatlize Words
+String.prototype.capitalize = function () {
+  const words = str.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+  }
+  return words.join(" ");
+};
+var str = "How car this sdfa";
+console.log(str.capitalize());
+
+// Complementary DNA
+function DNAStrand(dna) {
+  dna = dna.split("");
+  for (let i = 0; i < dna.length; i++) {
+    if (dna[i] == "T") {
+      dna.splice(i, 1, "A");
+    } else if (dna[i] == "A") {
+      dna.splice(i, 1, "T");
+    } else if (dna[i] == "C") {
+      dna.splice(i, 1, "G");
+    } else {
+      dna.splice(i, 1, "C");
+    }
+  }
+  dna = dna.join("");
+  return dna;
+}
+console.log(DNAStrand("AAA"));
+console.log(DNAStrand("ATTGC"));
+console.log(DNAStrand("GTAT"));
+
+// Replace with Alphabet Position
+const alphabetPosition = (text) => {
+  let store = [];
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i].toLowerCase();
+    let position = char.charCodeAt(0) - "a".charCodeAt(0) + 1;
+    if (char.match(/[a-z]/i)) {
+      store.push(position);
+    }
+  }
+  return store.join(" ");
+};
+console.log(alphabetPosition("alamin"));
+
+// The Hastag Generator
+const generateHastag = (str) => {
+  if (str.trim() === "") {
+    return false;
+  }
+  const words = str.trim().split(/\s+/);
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  const Hastag = "#" + capitalizedWords.join("");
+  if (Hastag.length > 140) {
+    return false;
+  }
+  return Hastag;
+};
+console.log(generateHastag("JavaScript"));
+console.log(generateHastag("Do we have a Hastag"));
+console.log(generateHastag("  Hello   World "));
+console.log(generateHastag("coding" + "".repeat(140) + "for like"));
+console.log(generateHastag(""));
+console.log(generateHastag(" ".repeat(200)));
+console.log(generateHastag("a".repeat(140)));
+
+// Extract the Domain from a URL
+function domainName(url) {
+  let sourceString = url
+    .replace("http://", "")
+    .replace("https://", "")
+    .replace("www.", "")
+    .split(/[/?#]/)[0];
+  let domain = sourceString.split(".")[0];
+  return domain;
+}
+
+console.log(domainName("www.google.com"));
+console.log(domainName("http://google.com"));
+console.log(domainName("https://google.com"));
+console.log(domainName("http://google.co.jp"));
+console.log(domainName("www.google.ca"));
+
+// Object Keys from snake_case to camelCase
+
+const toCamel = (obj) => {
+  let newObj = {};
+
+  for (let key in obj) {
+    let camelCaseKey = key
+      .toLowerCase()
+      .replace(/([-_][a-z])/g, (group) =>
+        group.toUpperCase().replace("-", "").replace("_", "")
+      );
+
+    newObj[camelCaseKey] = obj[key];
+  }
+
+  return newObj;
+};
+
+console.log(
+  toCamel({
+    first_name: "John",
+    last_name: "Ramo",
+    favorite_movie: "FIrst Blood",
+  })
+);
